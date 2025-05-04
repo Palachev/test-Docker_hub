@@ -13,6 +13,7 @@ pipeline {
         }
         stage('Build Docker Images') {
             steps {
+                sh 'ls'
                 sh 'sudo docker build -t pl43ch/my-app . '
                 echo 'Build Dockerfile Completed'
             }
