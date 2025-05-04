@@ -14,19 +14,19 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 sh 'ls'
-                sh 'sudo docker build -t pl43ch/my-app . '
+                sh 'docker build -t pl43ch/my-app . '
                 echo 'Build Dockerfile Completed'
             }
         }
         stage('Login to Docker.hub') {
             steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 echo 'Login Completed'
             }
         }
         stage('Push Image to Docker Hub') {
             steps {
-                sh 'sudo docker push pl43ch/my-app:$BUILD_NUMBER'
+                sh 'docker push pl43ch/my-app:$BUILD_NUMBER'
             }
         }
     }
