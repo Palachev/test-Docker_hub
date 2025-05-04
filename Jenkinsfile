@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Push Image to Docker Hub') {
             steps {
-                sh 'docker push pl43ch/my-app:$BUILD_NUMBER'
+                sh 'docker push pl43ch/my-app'
             }
         }
     }
